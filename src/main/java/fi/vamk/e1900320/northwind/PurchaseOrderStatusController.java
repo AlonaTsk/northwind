@@ -1,0 +1,64 @@
+package fi.vamk.e1900320.northwind;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import fi.vamk.e1900320.northwind.entity.PurchaseOrderStatus;
+
+@RestController
+public class PurchaseOrderStatusController {
+    // we need repository to provide dataabse access
+    @Autowired
+    PurchaseOrderStatusRepository repository;
+
+    @GetMapping("/PurchaseOrderStatus/")
+    public Iterable<PurchaseOrderStatus> getPurchaseOrderStatus() {
+        return repository.findAll();
+    }
+
+    
+
+    @PostMapping("/PurchaseOrderStatus")
+    public PurchaseOrderStatus create(@RequestBody PurchaseOrderStatus purchaseOrderStatus) {
+        return repository.save(purchaseOrderStatus);
+    }
+
+    @PutMapping("/PurchaseOrderStatus")
+    public PurchaseOrderStatus update(@RequestBody PurchaseOrderStatus purchaseOrderStatus) {
+        return repository.save(purchaseOrderStatus);
+    }
+
+    @DeleteMapping("/PurchaseOrderStatus")
+    public void delete(@RequestBody PurchaseOrderStatus purchaseOrderStatus) {
+        repository.delete(purchaseOrderStatus);
+    }
+
+    @GetMapping("/PurchaseOrderStatus/{id}")
+    public Optional<PurchaseOrderStatus> getItem(@PathVariable("id") int id) {
+        return repository.findById(id);
+    }
+
+    @DeleteMapping(value = "/PurchaseOrderStatus/{id}")
+    public void deleteById(@PathVariable("id") int id) {
+        repository.deleteById(id);
+    }
+}
+    /*@GetMapping("/PurchaseOrderStatus/{company}")
+    public Optional<PurchaseOrderStatus> getItem(@PathVariable("company") String company) {
+        return repository.findByCompany(company);
+    }
+    
+    @DeleteMapping(value = "/PurchaseOrderStatus/{company}")
+    public void deleteById(@PathVariable("company") String company) {
+        repository.deleteById(company);
+    }*/
+
+   

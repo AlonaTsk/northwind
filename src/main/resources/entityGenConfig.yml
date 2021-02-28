@@ -1,0 +1,7 @@
+jdbcSettings:
+  url: "jdbc:mariadb://mariadb.vamk.fi:3306/e1900320_northwind"
+  username: "e1900320"
+  password: "RhxasYWZupG"
+  driverClassName: "org.mariadb.jdbc.Driver"
+  
+packageName: "fi.vamk.e1900320.northwind.entity"
